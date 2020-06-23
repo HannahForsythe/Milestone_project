@@ -1,0 +1,24 @@
+<!doctype html>
+<title>Ottowa Gurley</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<div class=page>
+  <h1>Stock checker</h1>
+    <p><a href="/">Home</a></p>
+  <div class=metanav>
+
+    <h4>
+      Enter a stock ticker symbol.
+    </h4>
+    <p>(e.g. 'GOOG' for Google, 'IBM' for IBM, 'APP' for Apple)</p>
+    <form id='tickerform' method='post' action='displaystock' >
+      <p>
+        <input type='text' name='tickersymbol' />
+      </p>
+      <p>
+        <input type='submit' value='View closing value' />
+      </p>
+    </form>
+
+  </div>
+</div>
+</html>

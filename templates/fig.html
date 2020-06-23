@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ottowa Gurley</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Load javascript libraries for Bokeh plot -->
+<!--    <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.1.1.min.js"></script>-->
+<!--    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.1.1.min.js"></script>-->
+
+</head>
+<body>
+<div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-left">
+            <h2>Closing price for {{stock}}</h2>
+            <p><a href="/">Home</a></p>
+            <p><a href="/stocks">Back to Stock Checker</a></p>
+<!--              <div>{{ plot }}</div>-->
+
+              {{ script|safe }}
+              {{ div|safe }}
+</div>
+
+</body>
+</html>
