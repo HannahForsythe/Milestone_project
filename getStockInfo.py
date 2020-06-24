@@ -36,13 +36,14 @@ def getClosingPrice(ticker):
 
 # create a plot out of the closing data dataframe
 def plotStock(ticker):
-    df = getClosingPrice(ticker)
+    closingdata = getClosingPrice(ticker)
 
     #check to make sure that data has actually been retrieved
-    if 'Sorry' in str(df):
-        return f'Sorry, {ticker} is not a valid ticker symbol'
+    if 'Sorry' in str(closingdata):
+        return closingdata
+        # return f'Sorry, {ticker} is not a valid ticker symbol'
     else:
-        cds = ColumnDataSource(df)
+        cds = ColumnDataSource(closingdata)
         # #create a static HTML file
         # output_file("plot.html")
 
