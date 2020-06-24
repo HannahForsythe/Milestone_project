@@ -23,7 +23,8 @@ def getClosingPrice(ticker):
     response = requests.get("https://www.alphavantage.co/query?", params=parameters)
     raw_data = response.content.decode("utf-8")
     if 'Error Message' in raw_data:
-        return f'Sorry, {ticker} is not a valid ticker symbol'
+        errormessage = f'Sorry, {ticker} is not a valid ticker symbol'
+        return errormessage
     else:
         data = json.loads(raw_data)
         df_wide = pd.DataFrame(data['Time Series (Daily)'])
@@ -36,22 +37,23 @@ def getClosingPrice(ticker):
 # create a plot out of the closing data dataframe
 def plotStock(ticker):
     df = getClosingPrice(ticker)
-    #define axes
-    # x = df['date']
-    # y = df['close']
 
-    cds = ColumnDataSource(df)
-    # #create a static HTML file
-    # output_file("plot.html")
+    #check to make sure that data has actually been retrieved
+    if 'Sorry' in str(df):
+        return f'Sorry, {ticker} is not a valid ticker symbol'
+    else:
+        cds = ColumnDataSource(df)
+        # #create a static HTML file
+        # output_file("plot.html")
 
-    # create a plot with a title and axis labels
-    plot = figure(title="Price for last 30 days", x_axis_label='day', y_axis_label='closing price')
+        # create a plot with a title and axis labels
+        plot = figure(title="Price for last 30 days", x_axis_label='day', y_axis_label='closing price')
 
-    # add a line renderer with legend and line thickness
-    plot.line(x='date', y='close', source = cds, line_width=2)
+        # add a line renderer with legend and line thickness
+        plot.line(x='date', y='close', source = cds, line_width=2)
 
-    # show(plot) #This will open up the plot in a new tab; this DOES work, if clunky
+        # show(plot) #This will open up the plot in a new tab; this DOES work, if clunky
 
-    # save(plot, "plot.html") #This will create an html document which supposedly contains the plot
+        # save(plot, "plot.html") #This will create an html document which supposedly contains the plot
 
-    return plot
+        return plot

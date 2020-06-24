@@ -24,8 +24,6 @@ def displaystock():
   closingplot = plotStock(userticker)
   script, div = components(closingplot)
   return render_template('fig.html', stock=userticker, script=script, div=div)
-  # return render_template('fig1.html', stock=userticker, plot=closingplot)
-  # return render_template('fig2.html', script=script, div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
